@@ -1,7 +1,7 @@
 export interface IUser {
-    userId: number;
+    id: number;
     name: string;
     age: number;
-    mail: string;
+    email: string;
     genre: string
 }
