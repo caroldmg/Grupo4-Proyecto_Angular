@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
 import { IUser } from '../models/user.model';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  users: IUser[] = [];
+  url: string = "http://localhost:3000/users";
 
-  save(newUser: IUser): void{
-    newUser.id = this.generateId()
-    this.users.push(newUser)
+  constructor(private httpClient: HttpClient) { }
+
+  findAll(): Observable<IUser[]> {
+    return this.httpClient.get<IUser[]>(this.url);
   }
 
-  private generateId(): number{
-    let maxId = 0;
-    for (const user of this.users) {
-      if (user.id != undefined && user.id > maxId)
-        maxId = user.id;
-    }
-    return ++maxId;
+  findById(id: number): Observable<IUser> {
+    return this.httpClient.get<IUser>(`${this.url}/${id}`);
+  }
+
+  create(user :IUser): Observable<IUser> {
+    return this.httpClient.post<IUser>(this.url, user);
+  }
+
+  update(user: IUser): Observable<IUser> {
+    return this.httpClient.put<IUser>(`${this.url}/${user.id}`, user);
+  }
+
+  deleteById(id: number): void {
+    this.httpClient.delete(`${this.url}/${id}`);
   }
   
 }
