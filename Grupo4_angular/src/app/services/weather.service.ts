@@ -17,4 +17,12 @@ export class WeatherService {
   findAllProvincias(): Observable <IProvincia[]>{
     return this.httpClient.get<IProvincia[]>(this.jsonUrl);
   }
+
+// // TAREAS:
+// - Cambiar atributos a modelos y elementos de db sacados de la api (provincia y municipios)
+// - sacar el id del municipio (subsstring(0,5)) del CODIGOINE
+// - conseguir mostrar todos los municipios
+// - después, intentar las llamadas del weather por municipio
+// - probar la información que se recibe de la llamada
+// - añadir atributos a IWeather
 }
