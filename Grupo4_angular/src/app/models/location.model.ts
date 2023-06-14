@@ -1,8 +1,10 @@
-export interface ILocation {
+export interface ITown {
     
-    id: number;
-    NOMBRE: string;
-    CODPROV: number,
+    townId: number| undefined;
+    CODIGOINE: string;
+    CODPROV: string;
     NOMBRE_PROVINCIA: string;
+    NOMBRE: string;
+    NOMBRE_CAPITAL: string;
     
 }

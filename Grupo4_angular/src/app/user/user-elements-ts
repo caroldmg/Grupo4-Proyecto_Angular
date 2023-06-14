@@ -1,0 +1,11 @@
+import { IUser } from '../models/user.model'
+
+export const USERS: IUser[] = [
+    {
+        id: undefined,
+        name: 'Manolito Gafotas',
+        age: 19,
+        email: 'manolito.gafotas@gmail.com',
+        genre: 'male'
+    },
+]
